@@ -12,10 +12,11 @@ def graficar_campo_direccion(f, x_min, x_max, y_min, y_max, lineas_flujo=False, 
     plt.quiver(X, Y, U, V, angles='xy')
 
     if lineas_flujo:
-        for y_init in np.linspace(y_min, y_max, 10):
+        for y_init in np.linspace(y_min, y_max, 1):
             x_span = np.linspace(x_min, x_max, 100)
             sol = odeint(lambda y, x: f(x, y), y_init, x_span)
             plt.plot(x_span, sol, 'b-', linewidth=1)
+
 
     plt.xlabel('x')
     plt.ylabel('y')
@@ -30,4 +31,4 @@ def f(x, y):
     return numerador / denominador
 
 # Graficamos el campo de direcciones con límites ajustados
-graficar_campo_direccion(f, 0, 3, -1, 1) 
+graficar_campo_direccion(f, 0, 3, -1, 1, lineas_flujo=True) 
